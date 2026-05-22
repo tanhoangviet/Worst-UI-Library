@@ -130,7 +130,7 @@ function Dashboard.Create(parent)
 	Utils.ApplyCorner(toggles, Theme.Corner.Medium)
 	Utils.ApplyStroke(toggles, Theme.Colors.Stroke, 0.5)
 
-	Utils.Create("TextLabel", {BackgroundTransparency = 1, Text = "Quick Toggles", TextColor3 = Theme.Colors.TextPrimary, TextSize = 48, Font = Enum.Font.GothamBold, Size = UDim2.new(1, -20, 0, 64), Position = UDim2.fromOffset(18, 14), TextXAlignment = Enum.TextXAlignment.Left, Parent = toggles})
+	Utils.Create("TextLabel", {BackgroundTransparency = 1, Text = "Quick Toggles", TextColor3 = Theme.Colors.TextPrimary, TextSize = 48, FontFace = Font.fromName("GothamSSm", Enum.FontWeight.Bold), Size = UDim2.new(1, -20, 0, 64), Position = UDim2.fromOffset(18, 14), TextXAlignment = Enum.TextXAlignment.Left, Parent = toggles})
 	createToggle(toggles, "Noclip", true, 94)
 	createToggle(toggles, "Infinite Jump", true, 162)
 	createToggle(toggles, "God Mode", true, 230)
