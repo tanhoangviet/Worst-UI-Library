@@ -5,7 +5,7 @@ local Sidebar = {}
 
 local ITEMS = {"Dashboard", "Player", "Visuals", "World", "Combat", "Miscellaneous", "Settings"}
 
-function Sidebar.Create(parent: Instance)
+function Sidebar.Create(parent)
 	local sidebar = Utils.Create("Frame", {
 		Name = "Sidebar",
 		BackgroundColor3 = Theme.Colors.Panel,
@@ -17,7 +17,7 @@ function Sidebar.Create(parent: Instance)
 	Utils.ApplyCorner(sidebar, Theme.Corner.Medium)
 	Utils.ApplyStroke(sidebar, Theme.Colors.Stroke, 0.5)
 
-	local header = Utils.Create("TextLabel", {BackgroundTransparency = 1, Text = "☠ TitanUI", TextColor3 = Theme.Colors.TextPrimary, TextSize = 34, FontFace = Font.fromName("GothamSSm", Enum.FontWeight.Bold), Size = UDim2.new(1, -20, 0, 70), Position = UDim2.fromOffset(14, 8), TextXAlignment = Enum.TextXAlignment.Left, Parent = sidebar})
+	local header = Utils.Create("TextLabel", {BackgroundTransparency = 1, Text = "☠ TitanUI", TextColor3 = Theme.Colors.TextPrimary, TextSize = 34, Font = Enum.Font.GothamBold, Size = UDim2.new(1, -20, 0, 70), Position = UDim2.fromOffset(14, 8), TextXAlignment = Enum.TextXAlignment.Left, Parent = sidebar})
 
 	for index, label in ipairs(ITEMS) do
 		local y = 88 + ((index - 1) * 76)
@@ -29,7 +29,7 @@ function Sidebar.Create(parent: Instance)
 			TextColor3 = Theme.Colors.TextPrimary,
 			TextXAlignment = Enum.TextXAlignment.Left,
 			TextSize = 30,
-			FontFace = Font.fromName("GothamSSm", Enum.FontWeight.Medium),
+			Font = Enum.Font.Gotham,
 			Size = UDim2.new(1, -20, 0, 60),
 			Position = UDim2.new(0, 10, 0, y),
 			Text = "    " .. label,
@@ -43,7 +43,7 @@ function Sidebar.Create(parent: Instance)
 		Text = "Username\nPremium",
 		TextColor3 = Theme.Colors.TextPrimary,
 		TextSize = 28,
-		FontFace = Font.fromName("GothamSSm", Enum.FontWeight.Medium),
+		Font = Enum.Font.Gotham,
 		Size = UDim2.new(1, -20, 0, 100),
 		Position = UDim2.new(0, 16, 1, -120),
 		TextXAlignment = Enum.TextXAlignment.Left,

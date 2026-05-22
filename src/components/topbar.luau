@@ -3,14 +3,14 @@ local Utils = require(script.Parent.Parent.core.utils)
 
 local Topbar = {}
 
-local function createIconButton(parent: Instance, emoji: string, x: number)
+local function createIconButton(parent, emoji, x)
 	local btn = Utils.Create("TextButton", {
 		BackgroundColor3 = Theme.Colors.PanelSecondary,
 		BorderSizePixel = 0,
 		AutoButtonColor = false,
 		Text = emoji,
 		TextSize = 24,
-		FontFace = Font.fromName("GothamSSm", Enum.FontWeight.Bold),
+		Font = Enum.Font.GothamBold,
 		TextColor3 = Theme.Colors.TextPrimary,
 		Size = UDim2.fromOffset(54, 54),
 		Position = UDim2.new(1, x, 0, 0),
@@ -20,7 +20,7 @@ local function createIconButton(parent: Instance, emoji: string, x: number)
 	Utils.ApplyStroke(btn, Theme.Colors.Stroke, 0.4)
 end
 
-function Topbar.Create(parent: Instance, title: string)
+function Topbar.Create(parent, title)
 	local frame = Utils.Create("Frame", {
 		Name = "Topbar",
 		BackgroundTransparency = 1,
@@ -34,7 +34,7 @@ function Topbar.Create(parent: Instance, title: string)
 		Text = title,
 		TextColor3 = Theme.Colors.TextPrimary,
 		TextXAlignment = Enum.TextXAlignment.Left,
-		FontFace = Font.fromName("GothamSSm", Enum.FontWeight.Bold),
+		Font = Enum.Font.GothamBold,
 		TextSize = 40,
 		Size = UDim2.new(0.45, 0, 1, 0),
 		Parent = frame,
@@ -50,7 +50,7 @@ function Topbar.Create(parent: Instance, title: string)
 		TextColor3 = Theme.Colors.TextPrimary,
 		ClearTextOnFocus = false,
 		TextSize = 28,
-		FontFace = Font.fromName("GothamSSm", Enum.FontWeight.Medium),
+		Font = Enum.Font.Gotham,
 		Size = UDim2.new(0, 500, 0, 54),
 		Position = UDim2.new(0.5, -180, 0, 0),
 		Parent = frame,

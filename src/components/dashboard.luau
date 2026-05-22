@@ -3,7 +3,7 @@ local Utils = require(script.Parent.Parent.core.utils)
 
 local Dashboard = {}
 
-local function createStatCard(parent: Instance, title: string, value: string, position: UDim2)
+local function createStatCard(parent, title, value, position)
 	local card = Utils.Create("Frame", {
 		BackgroundColor3 = Theme.Colors.PanelSecondary,
 		BorderSizePixel = 0,
@@ -19,7 +19,7 @@ local function createStatCard(parent: Instance, title: string, value: string, po
 		Text = title,
 		TextColor3 = Theme.Colors.TextSecondary,
 		TextSize = 24,
-		FontFace = Font.fromName("GothamSSm", Enum.FontWeight.Medium),
+		Font = Enum.Font.Gotham,
 		Size = UDim2.new(1, -20, 0, 34),
 		Position = UDim2.new(0, 18, 0, 14),
 		TextXAlignment = Enum.TextXAlignment.Left,
@@ -31,7 +31,7 @@ local function createStatCard(parent: Instance, title: string, value: string, po
 		Text = value,
 		TextColor3 = Theme.Colors.TextPrimary,
 		TextSize = 46,
-		FontFace = Font.fromName("GothamSSm", Enum.FontWeight.Bold),
+		Font = Enum.Font.GothamBold,
 		Size = UDim2.new(1, -20, 0, 58),
 		Position = UDim2.new(0, 18, 0, 54),
 		TextXAlignment = Enum.TextXAlignment.Left,
@@ -39,13 +39,13 @@ local function createStatCard(parent: Instance, title: string, value: string, po
 	})
 end
 
-local function createToggle(parent: Instance, label: string, enabled: boolean, y: number)
+local function createToggle(parent, label, enabled, y)
 	Utils.Create("TextLabel", {
 		BackgroundTransparency = 1,
 		Text = label,
 		TextColor3 = Theme.Colors.TextPrimary,
 		TextSize = 20,
-		FontFace = Font.fromName("GothamSSm", Enum.FontWeight.Medium),
+		Font = Enum.Font.Gotham,
 		TextXAlignment = Enum.TextXAlignment.Left,
 		Size = UDim2.new(1, -150, 0, 42),
 		Position = UDim2.new(0, 22, 0, y),
@@ -70,7 +70,7 @@ local function createToggle(parent: Instance, label: string, enabled: boolean, y
 	Utils.ApplyCorner(knob, UDim.new(1, 0))
 end
 
-function Dashboard.Create(parent: Instance)
+function Dashboard.Create(parent)
 	local content = Utils.Create("Frame", {
 		Name = "Content",
 		BackgroundTransparency = 1,
@@ -84,7 +84,7 @@ function Dashboard.Create(parent: Instance)
 		Text = "Dashboard",
 		TextColor3 = Theme.Colors.TextPrimary,
 		TextSize = 56,
-		FontFace = Font.fromName("GothamSSm", Enum.FontWeight.Bold),
+		Font = Enum.Font.GothamBold,
 		Size = UDim2.new(1, 0, 0, 66),
 		TextXAlignment = Enum.TextXAlignment.Left,
 		Parent = content,
@@ -95,7 +95,7 @@ function Dashboard.Create(parent: Instance)
 		Text = "Overview of your game stats.",
 		TextColor3 = Theme.Colors.TextSecondary,
 		TextSize = 30,
-		FontFace = Font.fromName("GothamSSm", Enum.FontWeight.Medium),
+		Font = Enum.Font.Gotham,
 		Size = UDim2.new(1, 0, 0, 40),
 		Position = UDim2.fromOffset(0, 60),
 		TextXAlignment = Enum.TextXAlignment.Left,
@@ -117,8 +117,8 @@ function Dashboard.Create(parent: Instance)
 	Utils.ApplyCorner(performance, Theme.Corner.Medium)
 	Utils.ApplyStroke(performance, Theme.Colors.Stroke, 0.5)
 
-	Utils.Create("TextLabel", {BackgroundTransparency = 1, Text = "Performance", TextColor3 = Theme.Colors.TextPrimary, TextSize = 48, FontFace = Font.fromName("GothamSSm", Enum.FontWeight.Bold), Size = UDim2.new(1, -20, 0, 64), Position = UDim2.fromOffset(18, 14), TextXAlignment = Enum.TextXAlignment.Left, Parent = performance})
-	Utils.Create("TextLabel", {BackgroundTransparency = 1, Text = "144 FPS", TextColor3 = Theme.Colors.Accent, TextSize = 44, FontFace = Font.fromName("GothamSSm", Enum.FontWeight.Bold), Size = UDim2.new(0, 180, 0, 58), Position = UDim2.new(1, -190, 0, 22), TextXAlignment = Enum.TextXAlignment.Right, Parent = performance})
+	Utils.Create("TextLabel", {BackgroundTransparency = 1, Text = "Performance", TextColor3 = Theme.Colors.TextPrimary, TextSize = 48, Font = Enum.Font.GothamBold, Size = UDim2.new(1, -20, 0, 64), Position = UDim2.fromOffset(18, 14), TextXAlignment = Enum.TextXAlignment.Left, Parent = performance})
+	Utils.Create("TextLabel", {BackgroundTransparency = 1, Text = "144 FPS", TextColor3 = Theme.Colors.Accent, TextSize = 44, Font = Enum.Font.GothamBold, Size = UDim2.new(0, 180, 0, 58), Position = UDim2.new(1, -190, 0, 22), TextXAlignment = Enum.TextXAlignment.Right, Parent = performance})
 
 	local toggles = Utils.Create("Frame", {
 		BackgroundColor3 = Theme.Colors.PanelSecondary,

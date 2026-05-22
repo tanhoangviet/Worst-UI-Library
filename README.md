@@ -1,35 +1,28 @@
 # Worst-UI-Library
 
-UI Library Luau (Roblox) theo style TitanUI dark/red, tách module nhiều file và build bundle bằng darklua.
+TitanUI-style UI Library cho Roblox/Luau, hỗ trợ executor (Delta/Synapse X style), code open-source, build bundle 1 file chạy trực tiếp.
 
-## Features
-- Layout giống mockup: topbar, sidebar, dashboard cards, panel performance, quick toggles.
-- Kiến trúc module dễ mở rộng.
-- API đơn giản: `Library:CreateWindow(title)`.
-- Bundle ra 1 file duy nhất (`library.luau` hoặc `main.lua`).
-
-## Cấu trúc
-- `src/init.luau`: entry chính.
-- `src/core/theme.luau`: color palette + corner radius.
-- `src/core/utils.luau`: helper tạo UI instance.
-- `src/components/topbar.luau`: search + action buttons.
-- `src/components/sidebar.luau`: menu trái + profile.
-- `src/components/dashboard.luau`: stat cards + performance + quick toggles.
-- `example.client.luau`: ví dụ sử dụng.
+## Điểm chính
+- Multi-module source (dễ đọc, dễ sửa).
+- Build ra **1 file standalone** (không require external file/module khi chạy).
+- Tương thích executor tốt hơn với `gethui`, `syn.protect_gui`, `CoreGui`, `PlayerGui` fallback.
+- Có 2 output:
+  - `library.luau`: readable/open-source bundle.
+  - `main.lua`: phiên bản compact/minified nhẹ để phát hành.
 
 ## Build
 ```bash
 ./build.sh
 ```
-Mặc định output: `library.luau`
 
-Nếu muốn output là `main.lua`:
-```bash
-./build.sh main.lua
+## Dùng nhanh
+```lua
+local Library = loadstring(readfile("library.luau"))()
+Library:CreateWindow("TitanUI Library")
 ```
 
-## Yêu cầu
-- Cần cài darklua trước:
-```bash
-cargo install darklua
+hoặc:
+```lua
+local Library = loadstring(readfile("main.lua"))()
+Library:CreateWindow("TitanUI Library")
 ```

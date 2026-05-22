@@ -6,14 +6,14 @@ local Dashboard = require(script.components.dashboard)
 
 local Library = {}
 
-function Library:CreateWindow(title: string)
-	local playerGui = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
-	local oldGui = playerGui:FindFirstChild("WorstUiLibrary")
+function Library:CreateWindow(title)
+	local guiParent = Utils.GetGuiParent()
+	local oldGui = guiParent:FindFirstChild("WorstUiLibrary")
 	if oldGui then
 		oldGui:Destroy()
 	end
 
-	local screenGui = Utils.Create("ScreenGui", {Name = "WorstUiLibrary", ResetOnSpawn = false, IgnoreGuiInset = true, Parent = playerGui})
+	local screenGui = Utils.Create("ScreenGui", {Name = "WorstUiLibrary", ResetOnSpawn = false, IgnoreGuiInset = true, Parent = guiParent})
 
 	local frame = Utils.Create("Frame", {
 		Name = "Main",
