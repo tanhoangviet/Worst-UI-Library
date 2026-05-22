@@ -1,0 +1,68 @@
+name: Build Bundle + Deploy Docs
+
+on:
+  push:
+    branches: ["main", "master", "work"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install darklua
+        run: cargo install darklua
+
+      - name: Build bundles
+        run: |
+          chmod +x build.sh
+          ./build.sh
+
+      - name: Upload bundle artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: titanui-bundles
+          path: |
+            library.luau
+            main.lua
+            dist/
+
+      - name: Commit generated files (bot)
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(ci): auto-build bundles and docs assets"
+          file_pattern: "library.luau main.lua dist/**"
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload docs site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
