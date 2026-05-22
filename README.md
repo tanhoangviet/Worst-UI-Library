@@ -1,28 +1,44 @@
-# Worst-UI-Library
+# Worst-UI-Library (TitanUI Style)
 
-TitanUI-style UI Library cho Roblox/Luau, hỗ trợ executor (Delta/Synapse X style), code open-source, build bundle 1 file chạy trực tiếp.
+UI Library cho Roblox/Luau, responsive desktop + mobile, executor-friendly (Delta/Synapse X style), open-source bundle.
 
-## Điểm chính
-- Multi-module source (dễ đọc, dễ sửa).
-- Build ra **1 file standalone** (không require external file/module khi chạy).
-- Tương thích executor tốt hơn với `gethui`, `syn.protect_gui`, `CoreGui`, `PlayerGui` fallback.
-- Có 2 output:
-  - `library.luau`: readable/open-source bundle.
-  - `main.lua`: phiên bản compact/minified nhẹ để phát hành.
+## Nâng cấp mới
+- UI nhỏ hơn, không còn quá to trên màn hình mobile.
+- Auto responsive theo `ViewportSize`.
+- Mobile có bottom tab bar, desktop có sidebar.
+- API: `CreateWindow(title)`, `Notify(text)`.
+- Build ra nhiều bundle:
+  - `library.luau` (standalone)
+  - `main.lua` (compact)
+  - `dist/library.readable.luau`
+  - `dist/library.executor.lua`
+  - `dist/library.min.lua` (nếu có darklua)
 
-## Build
+## Build local
 ```bash
 ./build.sh
 ```
 
-## Dùng nhanh
+## GitHub Actions (auto build + auto commit + deploy docs)
+Workflow: `.github/workflows/build-and-deploy.yml`
+- Cài `darklua`
+- Build bundles
+- Upload artifacts
+- Auto commit file generated bằng bot action
+- Deploy `docs/` lên GitHub Pages
+
+## Examples
+- `examples/basic.client.luau`
+- `examples/mobile.client.luau`
+- `example.client.luau`
+
+## Docs Website
+- Local: mở `docs/index.html`
+- CI deploy: GitHub Pages từ workflow
+
+## Quick Use
 ```lua
 local Library = loadstring(readfile("library.luau"))()
-Library:CreateWindow("TitanUI Library")
-```
-
-hoặc:
-```lua
-local Library = loadstring(readfile("main.lua"))()
-Library:CreateWindow("TitanUI Library")
+Library:CreateWindow("TitanUI")
+Library:Notify("Hello")
 ```
